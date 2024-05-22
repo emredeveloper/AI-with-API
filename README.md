@@ -1,6 +1,6 @@
 Proje Adı
 
-Burayı projenizin ismiyle değiştirin.
+API ile AI model eğitimi
 
 Açıklama
 
@@ -13,17 +13,17 @@ Gereksinim duyulanlar
 
 Gerekli kütüphaneleri ve sürümlerini listeleyin:
 
-Flask
-scikit-learn
-pandas
-joblib
+Flask >=1.0
+scikit-learn >=0.24
+pandas >=1.0
+joblib >=0.12
 Kurulum
 
 Gerekli bağımlılıkların nasıl kurulacağını açıklayın:
 
 Bu depoyu kopyalayın veya kodu indirin.
 Terminalde proje dizinine gidin.
-pip install -r requirements.txt komutunu çalıştırın (eğer bir requirements.txt dosyanız varsa ve bağımlılıklar listeleniyorsa).
+pip install -r requirements.txt komutunu çalıştırın.
 Kullanım
 
 API'yi Çalıştırma:
@@ -38,37 +38,3 @@ DELETE /models/<model_name>: Yüklenmiş bir modeli kaldırır.
 POST /models/<model_name>/predict: Tek bir veri noktası üzerinde tahmin yapar (istek gövdesinde data parametresini JSON nesnesi olarak sağlayın).
 POST /models/<model_name>/predict_csv: Bir CSV dosyası üzerinde tahminler yapar (dosyayı multipart form data isteğinde file alanı kullanarak yükleyin).
 POST /models/train: Bir CSV dosyasından yeni bir Rastgele Orman modeli eğitir (dosyayı file alanı kullanarak yükleyin ve form data alanlarında model_name ve target_column parametrelerini sağlayın).
-Örnek Kullanım:
-
-API ile curl veya Postman gibi araçlar kullanarak nasıl etkileşim kurabileceğinize dair bazı örnekler:
-
-Modelleri Listeleme:
-
-Bash
-curl http://localhost:5000/models
-Kodu dikkatli kullanın.
-content_copy
-Model Yükleme:
-
-Bash
-curl -X POST http://localhost:5000/models -H "Content-Type: application/json" -d '{"model_name": "benim_modelim"}'
-Kodu dikkatli kullanın.
-content_copy
-Tahmin Yapma:
-
-Bash
-curl -X POST http://localhost:5000/models/benim_modelim/predict -H "Content-Type: application/json" -d '{"data": {"özellik1": 1.2, "özellik2": 3.4}}'
-Kodu dikkatli kullanın.
-content_copy
-CSV'den Tahmin Yapma:
-
-Verilerinizi içeren bir CSV dosyası hazırlayın.
-Postman gibi bir araç kullanarak http://localhost:5000/models/benim_modelim/predict_csv adresine bir POST isteği gönderin.
-file alanında CSV dosyasını seçin.
-Yeni Model Eğitme:
-
-Eğitim verilerinizi içeren bir CSV dosyası hazırlayın (hedef sütun dahil).
-Postman kullanarak http://localhost:5000/models/train adresine bir POST isteği gönderin.
-file alanında CSV dosyasını seçin.
-İstenen model adını (örneğin, yeni_model) form data alanındaki model_name parametresinde sağlayın.
-Hedef sütun adını (örneğin, hedef) form data alanındaki target_column parametresinde belirtin.
