@@ -1,40 +1,45 @@
-Proje Adı
+# API ile AI Model Eğitimi 
 
-API ile AI model eğitimi
+## Proje Genel Bakış
 
-Açıklama
+Bu Flask web uygulaması, Rastgele Orman sınıflandırıcıyı kullanarak güçlü bir makine öğrenmesi API'si oluşturur. Uygulama, önceden eğitilmiş modeller yüklemenize, yeni veriler üzerinde tahminler yapmanıza ve hatta CSV verilerinden yeni modeller eğitmenize olanak tanır.
 
-Bu Flask uygulaması, Rastgele Orman sınıflandırıcıyı kullanan bir makine öğrenmesi API'si sunar. Aşağıdakileri yapmanıza izin verir:
+## Başlarken
 
-Önceden eğitilmiş modelleri yükleme
-Yeni veriler üzerinde tahmin yapma (hem tekil örnekler hem de CSV dosyaları)
-CSV verilerinden yeni modeller eğitme
-Gereksinim duyulanlar
+### Gereksinimler
 
-Gerekli kütüphaneleri ve sürümlerini listeleyin:
+- Flask >=1.0
+- scikit-learn >=0.24
+- pandas >=1.0
+- joblib >=0.12
 
-Flask >=1.0
-scikit-learn >=0.24
-pandas >=1.0
-joblib >=0.12
-Kurulum
+### Kurulum
 
-Gerekli bağımlılıkların nasıl kurulacağını açıklayın:
+Başlamak için basit adımları izleyin:
 
-Bu depoyu kopyalayın veya kodu indirin.
-Terminalde proje dizinine gidin.
-pip install -r requirements.txt komutunu çalıştırın.
-Kullanım
+1. Bu depoyu kopyalayın veya kodunu indirin.
+2. Terminalinizi kullanarak proje dizinine gidin.
+3. Gerekli bağımlılıkları yüklemek için `pip install -r requirements.txt` komutunu çalıştırın.
 
-API'yi Çalıştırma:
+### Kullanım
 
-python app.py komutunu kullanarak API sunucusunu başlatın (ana scriptinizin adı farklıysa app.py yerine onu yazın).
-Varsayılan olarak, API http://127.0.0.1:5000/ (localhost portu 5000) üzerinde çalışır. Bunu Flask scriptiniz içindeki app.run çağrısında değiştirebilirsiniz.
-API Endpoints (Bağlantı Noktaları):
+#### API'yi Çalıştırma
 
-GET /models: Kullanılabilir önceden eğitilmiş modelleri listeler.
-POST /models: Bir önceden eğitilmiş modeli isme göre yükler (istek gövdesinde model_name parametresini sağlayın).
-DELETE /models/<model_name>: Yüklenmiş bir modeli kaldırır.
-POST /models/<model_name>/predict: Tek bir veri noktası üzerinde tahmin yapar (istek gövdesinde data parametresini JSON nesnesi olarak sağlayın).
-POST /models/<model_name>/predict_csv: Bir CSV dosyası üzerinde tahminler yapar (dosyayı multipart form data isteğinde file alanı kullanarak yükleyin).
-POST /models/train: Bir CSV dosyasından yeni bir Rastgele Orman modeli eğitir (dosyayı file alanı kullanarak yükleyin ve form data alanlarında model_name ve target_column parametrelerini sağlayın).
+API sunucusunu başlatmak için basitçe `python app.py` komutunu çalıştırın (ana scriptinizin adı farklıysa `app.py` yerine onu kullanın). Varsayılan olarak, API `http://127.0.0.1:5000/` (localhost portu 5000) üzerinde çalışacaktır. Farklı bir adres tercih ederseniz, bunu Flask scriptinizdeki `app.run` çağrısında kolayca değiştirebilirsiniz.
+
+#### API Uç Noktaları
+
+Uygulama, çeşitli görevleri gerçekleştirmek için kullanabileceğiniz birkaç uç nokta sunar:
+
+- **GET /models**: Kullanıma hazır önceden eğitilmiş modellerin listesini alın.
+- **POST /models**: Bir önceden eğitilmiş modeli yükleyin. İstek gövdesinde `model_name` parametresini sağlayın.
+- **DELETE /models/\<model_name\>**: Belirtilen önceden eğitilmiş modeli kaldırın.
+- **POST /models/\<model_name\>/predict**: Tek bir veri noktası üzerinde tahmin yapın. İstek gövdesinde JSON nesnesi olarak `data` parametresini sağlayın.
+- **POST /models/\<model_name\>/predict_csv**: Bir CSV dosyası üzerinde toplu tahminler yapın. Dosyayı multipart form verileri aracılığıyla `file` alanı ile yükleyin.
+- **POST /models/train**: Yeni bir Rastgele Orman modeli eğitin. CSV dosyasını `file` alanı ile yükleyin ve form verileri aracılığıyla `model_name` ve `target_column` parametrelerini belirtin.
+
+## Özellikler ve Gelecek Geliştirmeler
+
+Bu uygulama, makine öğrenmesi modellerini kolayca dağıtmanıza ve kullanmanıza olanak tanır. Gelecekteki geliştirmeler, farklı türde modellerin desteklenmesini, daha gelişmiş eğitim seçeneklerini ve API'nin performansını ve ölçeklenebilirliğini iyileştirmeyi içerebilir.
+
+Katkılar ve geri bildirimler memnuniyetle karşılanır! Lütfen bu projeye katkıda bulunmak veya herhangi bir sorunuz veya öneriniz varsa bizimle iletişime geçmek için çekinmeyin.
